@@ -24,6 +24,8 @@ class Skeleton
 
   # Bin command
   constructor: ->
+    @folderCache = {}
+
     args = process.argv.splice(2)
     options = new OptionParser(args)
 
@@ -46,18 +48,20 @@ class Skeleton
     this.mkdir path, =>
       return if path.split('/').pop() == 'empty'
 
-      fs.writeFile path, content, (err) =>
-        throw err if err
-        this.displayLine "=> Create #{path}"
+      fs.writeFileSync path, content
+      this.displayLine "=> Create #{path}"
 
   mkdir: (filename, callback=null) ->
-    parts = filename.split('/')
-    parts.pop()
-    path = parts.join('/')
-
-    mkdirp path, '0755', (err) ->
-      throw err if err
+    dirname = path.dirname(filename)
+    if @folderCache[dirname]
       callback() if callback
+      return
+
+    mkdirp.sync dirname, '0755'
+    @folderCache[dirname] = true
+
+    this.displayLine "=> Create #{dirname}"
+    callback() if callback
 
   # Display messages
   displayHelp: ->
