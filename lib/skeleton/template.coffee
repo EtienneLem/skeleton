@@ -196,7 +196,7 @@ class Template
           <script>
           document.write('<script src=' +
           ('__proto__' in {} ? 'http://zeptojs.com/zepto.min.js' : 'http://code.jquery.com/jquery-1.7.2.min.js') +
-          '.js><\/script>')
+          '><\\/script>')
           </script>
           <%- js('scripts.js') %>
         </body>
