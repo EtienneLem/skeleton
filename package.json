@@ -1,0 +1,17 @@
+{
+  "name": "skeleton",
+  "description": "Express 3.0 framework-less app structure generator",
+  "version": "0.0.1",
+  "author": "Etienne Lemay",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/EtienneLem/skeleton.git"
+  },
+  "engines": {"node": "*"},
+  "dependencies": {
+    "coffee-script": "1.3.x",
+    "mkdirp": "0.3.x"
+  },
+  "keywords": ["skeleton", "express", "structure"],
+  "bin": { "skeleton": "./bin/skeleton" }
+}
