@@ -18,6 +18,7 @@ class Template
         , "dependencies": {
               "express": "3.0.x"
             , "connect-assets": "2.1.x"
+            , "express-partials": "git://github.com/publicclass/express-partials.git"
             , "stylus": "*"
             , "ejs": "*"
             , "coffee-script": "*"
@@ -47,6 +48,7 @@ class Template
       # Modules
       express = require 'express'
       http = require 'http'
+      partials = require 'express-partials'
       app = express()
 
       # Boot setup
@@ -66,6 +68,7 @@ class Template
         app.use express.logger('dev')
         app.use express.bodyParser()
         app.use express.methodOverride()
+        app.use partials()
         app.use require('connect-assets')(src: "\#{__dirname}/assets")
         app.use app.router
 
