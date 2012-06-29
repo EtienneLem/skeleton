@@ -1,14 +1,15 @@
 class OptionParser
 
-  constructor: (@args) ->
-    # TODO: Make the returned object completely dynamic
-    return {
-      help:     this.getOption(['-h', '--help']) || @args.length == 0
-      version:  this.getOption ['-v', '--version']
-      force:    this.getOption ['-f', '--force']
-      renderer: this.getOption ['-r', '--renderer'], true
-      appName:  @args.last()
-    }
+  constructor: (@args, opts) ->
+    options = {}
+    for opt in opts
+      short = opt[0]
+      long = opt[1]
+      withValue = opt[3]?
+      optName = long.replace('--', '')
+      options[optName] = this.getOption [short, long], withValue
+
+    return options
 
   # Returns given flags value if `withValue`
   # else returns a boolean if the flag is found

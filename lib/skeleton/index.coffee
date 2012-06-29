@@ -20,7 +20,7 @@ class Skeleton
   @OPTIONS = [
     ['-h', '--help', 'display this help message']
     ['-v', '--version', 'display the version number']
-    ['-r', '--renderer', 'use specified renderer [only ejs for now]']
+    ['-r', '--renderer', 'use specified renderer', 'ejs']
     ['-f', '--force', 'force on non-empty directory']
   ]
 
@@ -29,9 +29,9 @@ class Skeleton
     @folderCache = {}
 
     args = process.argv.splice(2)
-    options = new OptionParser(args)
+    options = new OptionParser(args, Skeleton.OPTIONS)
 
-    if options.help
+    if options.help || args.length == 0
       this.displayHelp()
       return
 
