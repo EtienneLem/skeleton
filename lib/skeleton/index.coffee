@@ -3,6 +3,7 @@ fs = require 'fs'
 path = require 'path'
 util = require 'util'
 mkdirp = require 'mkdirp'
+colors = require 'colors'
 
 # Local dependencies
 Template = require './template'
@@ -41,27 +42,38 @@ class Skeleton
 
   createProject: (appName, opts) =>
     template = new Template(appName, opts)
+    this.displayLine ''
+
     for filename, content of template.files
       this.write filename, "#{content}\n"
 
+    this.displayLine ''
+    this.displayLine '  ============================================='.cyan
+    this.displayLine "  #{'$'.cyan} cd #{opts.appName} && npm install"
+    this.displayLine "  #{'$'.cyan} node server.js"
+    this.displayLine '  ============================================='.cyan
+
   write: (path, content) ->
-    this.mkdir path, =>
+    this.mkdir path, (spaces) =>
       return if path.split('/').pop() == 'empty'
 
       fs.writeFileSync path, content
-      this.displayLine "=> Create #{path}"
+      this.displayLine "  #{spaces}create: #{path}"
 
   mkdir: (filename, callback=null) ->
     dirname = path.dirname(filename)
+    depth = dirname.split('/').length
+    spaces = new Array(depth).join('')
+
     if @folderCache[dirname]
-      callback() if callback
+      callback(spaces) if callback
       return
 
     mkdirp.sync dirname, '0755'
     @folderCache[dirname] = true
 
-    this.displayLine "=> Create #{dirname}"
-    callback() if callback
+    this.displayLine "  #{spaces}create: #{dirname}".magenta
+    callback(spaces) if callback
 
   # Display messages
   displayHelp: ->

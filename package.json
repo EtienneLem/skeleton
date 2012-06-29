@@ -10,7 +10,8 @@
   "engines": {"node": "*"},
   "dependencies": {
     "coffee-script": "1.3.x",
-    "mkdirp": "0.3.x"
+    "mkdirp": "0.3.x",
+    "colors": "0.6.x"
   },
   "keywords": ["skeleton", "express", "structure"],
   "bin": { "skeleton": "./bin/skeleton" }
