@@ -7,7 +7,7 @@ class OptionParser
       version:  this.getOption ['-v', '--version']
       force:    this.getOption ['-f', '--force']
       renderer: this.getOption ['-r', '--renderer'], true
-      appName:  this.getOption(['-a', '--appname'], true) || @args.last()
+      appName:  @args.last()
     }
 
   # Returns given flags value if `withValue`
