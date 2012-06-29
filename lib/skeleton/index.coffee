@@ -21,6 +21,7 @@ class Skeleton
     ['-h', '--help', 'display this help message']
     ['-v', '--version', 'display the version number']
     ['-r', '--renderer', 'use specified renderer [only ejs for now]']
+    ['-f', '--force', 'force on non-empty directory']
   ]
 
   # Bin command
@@ -38,7 +39,16 @@ class Skeleton
       this.displayVersion()
       return
 
-    this.createProject(options.appName, options) if options.appName
+    if options.appName
+      files = fs.readdir "./#{options.appName}", (err, files) =>
+        throw err if err && 'ENOENT' != err.code
+        empty = !files?.length > 0
+
+        if empty || !empty && options.force
+          this.createProject(options.appName, options)
+        else
+          this.displayLine 'Folder not empty. Use the --force flag to overrite'.grey
+          this.displayLine "#{'$'.cyan} skeleton -f #{options.appName}"
 
   createProject: (appName, opts) =>
     template = new Template(appName, opts)
