@@ -1,24 +1,30 @@
 class OptionParser
 
   constructor: (@args) ->
-    joinedArgs = @args.join('|')
-
     # TODO: Make the returned object completely dynamic
     return {
-      help:     joinedArgs.search(/-h|--help/) > -1 || args.length == 0
-      version:  joinedArgs.search(/-v|--version/) > -1
-      renderer: this.getOptionValue ['-r', '--renderer']
-      appName:  this.getOptionValue(['-a', '--appname']) || @args.last()
+      help:     this.getOption(['-h', '--help']) || @args.length == 0
+      version:  this.getOption ['-v', '--version']
+      force:    this.getOption ['-f', '--force']
+      renderer: this.getOption ['-r', '--renderer'], true
+      appName:  this.getOption(['-a', '--appname'], true) || @args.last()
     }
 
-  # Private
-  # Returns given flags value or null
-  getOptionValue: (flags) ->
+  # Returns given flags value if `withValue`
+  # else returns a boolean if the flag is found
+  getOption: (flags, withValue=false) ->
     for flag in flags
       index = @args.indexOf(flag)
-      return @args[index + 1] if index > -1
+      if index > -1
+        value = if withValue then @args[index + 1] else true
+        this.spliceArgs index, withValue
+        return value
 
-    null
+    if withValue then null else false
+
+  spliceArgs: (index, hasValue=false) ->
+    nbr = if hasValue then 2 else 1
+    @args.splice(index, nbr)
 
 
 # Exports
