@@ -104,11 +104,11 @@ class Skeleton
         desc: desc
         length: length
 
-    this.displayLine '\nUsage: skeleton [options] myapp\n'
+    this.displayLine '\n  Usage: skeleton [options] myapp\n'
 
     for rule in rules
       spaces = new Array(longest - rule.length + 3).join(' ')
-      this.displayLine "#{rule.short}, #{rule.long}#{spaces}#{rule.desc}"
+      this.displayLine "  #{rule.short}, #{rule.long}#{spaces}#{rule.desc}"
 
   displayVersion: ->
     this.displayLine "Skeleton version #{Skeleton.VERSION}"
