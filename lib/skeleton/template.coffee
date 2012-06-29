@@ -18,7 +18,7 @@ class Template
         , "dependencies": {
               "express": "3.0.x"
             , "connect-assets": "2.1.x"
-            , "express-partials": "git://github.com/publicclass/express-partials.git"
+            , "express-partials": ">= 0.0.5"
             , "stylus": "*"
             , "ejs": "*"
             , "coffee-script": "*"
