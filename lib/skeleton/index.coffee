@@ -18,10 +18,12 @@ class Skeleton
   @VERSION = '0.0.1'
 
   @OPTIONS = [
-    ['-h', '--help', 'display this help message']
-    ['-v', '--version', 'display the version number']
-    ['-r', '--renderer', 'use specified renderer', 'ejs']
-    ['-f', '--force', 'force on non-empty directory']
+  #  Short Long           Description                     Choices
+    ['-h', '--help',      'display this help message'                                       ]
+    ['-v', '--version',   'display the version number'                                      ]
+    ['-f', '--force',     'force on non-empty directory'                                    ]
+    ['-r', '--renderer',  'template engine',              ['ejs']                           ]
+    ['-c', '--css',       'stylesheet engine',            ['stylus', 'less', 'sass', 'css'] ]
   ]
 
   # Bin command
