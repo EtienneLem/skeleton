@@ -61,6 +61,9 @@ class Skeleton
 
     this.displayLine ''
     this.displayLine '  ============================================='.cyan
+    this.displayLine "  #{'template engine:'.cyan} #{opts.renderer}"
+    this.displayLine "  #{'stylesheet engine:'.cyan} #{opts.css}"
+    this.displayLine ''
     this.displayLine "  #{'$'.cyan} cd #{opts.appName} && npm install"
     this.displayLine "  #{'$'.cyan} node server.js"
     this.displayLine '  ============================================='.cyan
