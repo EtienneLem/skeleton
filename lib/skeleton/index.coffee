@@ -18,12 +18,13 @@ class Skeleton
   @VERSION = '0.0.1'
 
   @OPTIONS = [
-  #  Short Long            Description                     Choices
-    ['-h', '--help',       'display this help message'                               ]
-    ['-v', '--version',    'display the version number'                              ]
-    ['-f', '--force',      'force on non-empty directory'                            ]
-    ['-r', '--renderer',   'template engine',              ['ejs']                   ]
-    ['-c', '--css',        'stylesheet engine',            ['stylus', 'less', 'css'] ]
+  #  Short Long           Description                     Choices
+    ['-h', '--help',      'display this help message'                               ]
+    ['-v', '--version',   'display the version number'                              ]
+    ['-f', '--force',     'force on non-empty directory'                            ]
+    ['-r', '--renderer',  'template engine',              ['ejs']                   ]
+    ['-c', '--css',       'stylesheet engine',            ['stylus', 'less', 'css'] ]
+    ['-j', '--js',        'javascript engine',            ['coffee', 'js']          ]
   ]
 
   # Bin command
@@ -63,6 +64,7 @@ class Skeleton
     this.displayLine '  ============================================='.cyan
     this.displayLine "  #{'template engine:'.cyan} #{opts.renderer}"
     this.displayLine "  #{'stylesheet engine:'.cyan} #{opts.css}"
+    this.displayLine "  #{'javascript engine:'.cyan} #{opts.js}"
     this.displayLine ''
     this.displayLine "  #{'$'.cyan} cd #{opts.appName} && npm install"
     this.displayLine "  #{'$'.cyan} node server.js"

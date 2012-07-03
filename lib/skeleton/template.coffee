@@ -19,8 +19,9 @@ class Template
               "express": "3.0.x"
             , "connect-assets": "2.1.x"
             , "express-partials": ">= 0.0.5"
-            #{this.printCssEngine()}, "ejs": "*"
-            , "coffee-script": "*"
+            , "ejs": "*"
+            #{this.printCssEngine()}
+            #{this.printJsEngine()}
           }
         , "scripts": {
             "start": "server.js"
@@ -187,9 +188,15 @@ class Template
       """
 
     # ./myapp/app/assets/js
-    files["#{@appName}/app/assets/js/scripts.coffee"] = """
-      # console.log '#{@appName}'
-    """
+    if @opts.js == 'coffee'
+      files["#{@appName}/app/assets/js/scripts.coffee"] = """
+        # console.log '#{@appName}'
+      """
+
+    if @opts.js == 'js'
+      files["#{@appName}/app/assets/js/scripts.js"] = """
+        // console.log('#{@appName}')
+      """
 
     # ./myapp/app/controllers
     files["#{@appName}/app/controllers/application_controller.coffee"] = """
@@ -323,10 +330,16 @@ class Template
     if @opts.css != 'css'
       spaces = '      '
       """
-        , "#{@opts.css}": "*"\n#{spaces}
+        , "#{@opts.css}": "*"
       """
-    else
-      ''
+    else ''
+
+  printJsEngine: ->
+    if @opts.js == 'coffee'
+      """
+        , "coffee-script": "*"
+      """
+    else ''
 
 
 module.exports = Template
