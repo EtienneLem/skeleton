@@ -361,18 +361,17 @@ class Template
     files
 
   printTemplateEngine: ->
-    engine = @opts.renderer
     module = ''
     spaces = '      '
 
     # Jade doesn’t need express-partials
-    if engine != 'jade'
+    if @opts.renderer != 'jade'
       module = """
         , "express-partials": ">= 0.0.5"\n#{spaces}
       """
 
     module += """
-      , "#{engine}": "*"
+      , "#{@opts.renderer}": "*"
     """
 
     # Returns the module(s) string
