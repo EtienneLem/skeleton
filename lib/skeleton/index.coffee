@@ -22,7 +22,7 @@ class Skeleton
     ['-h', '--help',      'display this help message'                               ]
     ['-v', '--version',   'display the version number'                              ]
     ['-f', '--force',     'force on non-empty directory'                            ]
-    ['-r', '--renderer',  'template engine',              ['ejs']                   ]
+    ['-r', '--renderer',  'template engine',              ['ejs', 'jade']           ]
     ['-c', '--css',       'stylesheet engine',            ['stylus', 'less', 'css'] ]
     ['-j', '--js',        'javascript engine',            ['coffee', 'js']          ]
   ]
