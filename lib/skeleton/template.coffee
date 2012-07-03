@@ -19,8 +19,7 @@ class Template
               "express": "3.0.x"
             , "connect-assets": "2.1.x"
             , "express-partials": ">= 0.0.5"
-            , "stylus": "*"
-            , "ejs": "*"
+            #{this.printCssEngine()}, "ejs": "*"
             , "coffee-script": "*"
           }
         , "scripts": {
@@ -84,33 +83,108 @@ class Template
     """
 
     # ./myapp/app/assets/css
-    files["#{@appName}/app/assets/css/styles.styl"] = """
-      // Based on <https://github.com/heliom/stylus-utils/blob/master/styles.styl-sample>
-      // @import "nib"
+    if @opts.css == 'stylus'
+      files["#{@appName}/app/assets/css/styles.styl"] = """
+        // Based on <https://github.com/heliom/stylus-utils/blob/master/styles.styl-sample>
+        // @import "nib"
 
-      // Reset ---------------------------------------------------------------------
-      *
-        margin: 0; padding: 0
-        -webkit-box-sizing: border-box
-        -moz-box-sizing: border-box
-        box-sizing: border-box
+        // Reset ---------------------------------------------------------------------
+        *
+          margin: 0; padding: 0
+          -webkit-box-sizing: border-box
+          -moz-box-sizing: border-box
+          box-sizing: border-box
 
-      // Base ----------------------------------------------------------------------
-      html
-        font-size: 62.5%
-        height: 100%
+        // Base ----------------------------------------------------------------------
+        $background-color = #f4f4f4
 
-      body
-        font-size: 16
+        html
+          font-size: 62.5%
+          height: 100%
 
-      body, legend, input, textarea, button
-        font-family: 'Helvetica Neue'
-        line-height: 1.4
-        color: #333
+        body
+          font-size: 16px
+          font-size: 1.6rem
+          background-color: $background-color
 
-      a:link, a:visited { color: deeppink }
-      a:focus, a:link:hover  { color: hotpink }
-    """
+        body, legend, input, textarea, button
+          font-family: 'Helvetica Neue'
+          line-height: 1.4
+          color: #333
+
+        a:link, a:visited { color: deeppink }
+        a:focus, a:link:hover  { color: hotpink }
+      """
+
+    if @opts.css == 'less'
+      files["#{@appName}/app/assets/css/styles.less"] = """
+        // Based on <https://github.com/heliom/stylus-utils/blob/master/styles.styl-sample>
+
+        // Reset ---------------------------------------------------------------------
+        * {
+          margin: 0; padding: 0;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        // Base ----------------------------------------------------------------------
+        @background-color: #f4f4f4;
+
+        html {
+          font-size: 62.5%;
+          height: 100%;
+        }
+
+        body {
+          font-size: 16px;
+          font-size: 1.6rem;
+          background-color: @background-color;
+        }
+
+        body, legend, input, textarea, button {
+          font-family: 'Helvetica Neue';
+          line-height: 1.4;
+          color: #333;
+        }
+
+        a:link, a:visited { color: deeppink }
+        a:focus, a:link:hover  { color: hotpink }
+      """
+
+    if @opts.css == 'css'
+      files["#{@appName}/app/assets/css/styles.css"] = """
+        /* Based on <https://github.com/heliom/stylus-utils/blob/master/styles.styl-sample> */
+
+        /* Reset --------------------------------------------------------------------- */
+        * {
+          margin: 0; padding: 0;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        /* Base ---------------------------------------------------------------------- */
+        html {
+          font-size: 62.5%;
+          height: 100%;
+        }
+
+        body {
+          font-size: 16px;
+          font-size: 1.6rem;
+          background-color: #f4f4f4;
+        }
+
+        body, legend, input, textarea, button {
+          font-family: 'Helvetica Neue';
+          line-height: 1.4;
+          color: #333;
+        }
+
+        a:link, a:visited { color: deeppink }
+        a:focus, a:link:hover  { color: hotpink }
+      """
 
     # ./myapp/app/assets/js
     files["#{@appName}/app/assets/js/scripts.coffee"] = """
@@ -244,6 +318,15 @@ class Template
 
     # Return the files object
     files
+
+  printCssEngine: ->
+    if @opts.css != 'css'
+      spaces = '      '
+      """
+        , "#{@opts.css}": "*"\n#{spaces}
+      """
+    else
+      ''
 
 
 module.exports = Template
