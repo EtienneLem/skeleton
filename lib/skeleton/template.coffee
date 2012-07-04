@@ -229,7 +229,7 @@ class Template
       # Capitalize a string
       # string => String
       String::capitalize = () ->
-          this.replace /(?:^|s)S/g, (a) -> a.toUpperCase()
+          this.replace /(?:^|\\s)\\S/g, (a) -> a.toUpperCase()
 
       # Classify a string
       # application_controller => ApplicationController
