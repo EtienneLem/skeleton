@@ -148,7 +148,7 @@ class Skeleton
       this.displayLine "  #{rule.short}, #{rule.long}#{spaces}#{rule.desc} #{this.printChoices rule.choices}"
 
   printChoices: (choices) ->
-    return '' if !choices
+    return '' if !choices || choices[0] == ''
 
     "[#{choices.join(', ')}] (default: #{choices[0]})"
 

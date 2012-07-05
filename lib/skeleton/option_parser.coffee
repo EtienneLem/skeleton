@@ -34,7 +34,7 @@ class OptionParser
       if index > -1
         if choices?
           value = @args[index + 1]
-          if choices.indexOf(value) == -1
+          if choices.indexOf(value) == -1 && choices[0] != ''
             console.warn "Invalid value “#{value}” for #{flag} option"
             process.exit()
         else
