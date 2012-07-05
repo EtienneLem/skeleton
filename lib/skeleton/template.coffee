@@ -197,17 +197,13 @@ class Template
 
     # ./myapp/app/controllers
     files["#{@appName}/app/controllers/application_controller.coffee"] = """
-      class ApplicationController
-
-        # GET /
-        @index = (req, res) ->
-          res.render 'index',
-            view: 'index'
-
-
-      # Exports
       module.exports = (app) ->
-        app.ApplicationController = ApplicationController
+        class app.ApplicationController
+
+          # GET /
+          @index = (req, res) ->
+            res.render 'index',
+              view: 'index'
     """
 
     # ./myapp/app/helpers
@@ -225,6 +221,11 @@ class Template
             autoload path, app
           else
             require(path)?(app)
+
+      # Return last item of an array
+      # ['a', 'b', 'c'].last() => 'c'
+      Array::last = ->
+        this[this.length - 1]
 
       # Capitalize a string
       # string => String
@@ -342,14 +343,11 @@ class Template
       #
       # Or if you want this to be a class
       #
-      # class MyCustomClass
-      #
-      #   constructor: (args) ->
-      #     # Your code
-      #
-      # # Exports
       # module.exports = (app) ->
-      #   app.MyCustomClass = MyCustomClass
+      #   class app.MyCustomClass
+      #
+      #     constructor: (args) ->
+      #       # Your code
       #
       # Usage: new app.MyCustomClass(args)
     """
