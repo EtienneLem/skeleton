@@ -18,13 +18,14 @@ class Skeleton
   @VERSION = '0.0.1'
 
   @OPTIONS = [
-  #  Short Long           Description                     Choices
-    ['-h', '--help',      'display this help message'                               ]
-    ['-v', '--version',   'display the version number'                              ]
-    ['-f', '--force',     'force on non-empty directory'                            ]
-    ['-r', '--renderer',  'template engine',              ['ejs', 'jade']           ]
-    ['-c', '--css',       'stylesheet engine',            ['stylus', 'less', 'css'] ]
-    ['-j', '--js',        'javascript engine',            ['coffee', 'js']          ]
+  #  Short Long           Description                             Choices
+    ['-h', '--help',      'display this help message'                                      ]
+    ['-v', '--version',   'display the version number'                                     ]
+    ['-f', '--force',     'force on non-empty directory'                                    ]
+    ['-d', '--directory', 'the output directory (default: ./)',   ['']                      ]
+    ['-r', '--renderer',  'template engine',                      ['ejs', 'jade']           ]
+    ['-c', '--css',       'stylesheet engine',                    ['stylus', 'less', 'css'] ]
+    ['-j', '--js',        'javascript engine',                    ['coffee', 'js']          ]
   ]
 
   constructor: ->
@@ -55,7 +56,7 @@ class Skeleton
           this.displayLine "#{'$'.cyan} skeleton -f #{options.appName}"
 
   ###
-  * Create a project at ./appName
+  * Create a project in appName folder
 
   * @param {String} appName
   * @param {Object} opts
@@ -87,6 +88,9 @@ class Skeleton
   ###
 
   write: (path, content) ->
+    # Remove useless leading ./ from path
+    path = path.replace /^\.\//, ''
+
     this.mkdir path, (spaces) =>
       return if path.split('/').pop() == 'empty'
 
