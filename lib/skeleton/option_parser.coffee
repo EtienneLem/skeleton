@@ -1,5 +1,12 @@
 class OptionParser
 
+  ###
+  * Parse command-line options
+
+  * @param {Array}  @args
+  * @param {Object} opts
+  ###
+
   constructor: (@args, opts) ->
     options = {}
 
@@ -13,8 +20,14 @@ class OptionParser
     options.appName = @args.last()
     return options
 
-  # Returns given flags value if the option has choices
-  # else returns a boolean if the flag is found
+  ###
+  * Return given flags value if the option has choices
+  * else return a boolean whether the flag if found or not
+
+  * @param {Array} flags
+  * @param {Array} choices
+  ###
+
   getOption: (flags, choices) ->
     for flag in flags
       index = @args.indexOf(flag)
@@ -32,10 +45,18 @@ class OptionParser
 
     if choices? then choices[0] else false
 
+  ###
+  * When a flag if parsed, it is removed from the @args array
+  * Last option remaining is the appName
+
+  * @param {Int}     index
+  * @param {Boolean} hasValue (default: false)
+  ###
+
   spliceArgs: (index, hasValue=false) ->
     nbr = if hasValue then 2 else 1
     @args.splice(index, nbr)
 
 
-# Exports
+# Export the class
 module.exports = OptionParser

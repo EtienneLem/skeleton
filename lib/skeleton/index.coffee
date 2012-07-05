@@ -27,17 +27,18 @@ class Skeleton
     ['-j', '--js',        'javascript engine',            ['coffee', 'js']          ]
   ]
 
-  # Bin command
   constructor: ->
     @folderCache = {}
 
     args = process.argv.splice(2)
     options = new OptionParser(args, Skeleton.OPTIONS)
 
+    # Display help message and exit process
     if options.help || args.length == 0
       this.displayHelp()
       return
 
+    # Display current version and exit process
     if options.version
       this.displayVersion()
       return
@@ -52,6 +53,13 @@ class Skeleton
         else
           this.displayLine 'Folder not empty. Use the --force flag to overrite'.grey
           this.displayLine "#{'$'.cyan} skeleton -f #{options.appName}"
+
+  ###
+  * Create a project at ./appName
+
+  * @param {String} appName
+  * @param {Object} opts
+  ###
 
   createProject: (appName, opts) =>
     template = new Template(appName, opts)
@@ -70,12 +78,29 @@ class Skeleton
     this.displayLine "  #{'$'.cyan} node server.js"
     this.displayLine '  ============================================='.cyan
 
+  ###*
+  * Echo content > path
+  * Will recursively create its parent directories
+
+  * @param {String} path
+  * @param {String} content
+  ###
+
   write: (path, content) ->
     this.mkdir path, (spaces) =>
       return if path.split('/').pop() == 'empty'
 
       fs.writeFileSync path, content
       this.displayLine "  #{spaces}create: #{path}"
+
+
+  ###
+  * Mkdir recusrive (-p)
+  * Doesn’t create already created directory
+
+  * @param {String}   filename
+  * @param {Function} callback
+  ###
 
   mkdir: (filename, callback=null) ->
     dirname = path.dirname(filename)
@@ -92,7 +117,10 @@ class Skeleton
     this.displayLine "  #{spaces}create: #{dirname}".magenta
     callback(spaces) if callback
 
-  # Display messages
+  ###
+  * Display help message
+  ###
+
   displayHelp: ->
     rules = []
     longest = 0
@@ -124,12 +152,23 @@ class Skeleton
 
     "[#{choices.join(', ')}] (default: #{choices[0]})"
 
+  ###
+  * Display current Skeleton version
+  ###
+
   displayVersion: ->
     this.displayLine "Skeleton version #{Skeleton.VERSION}"
+
+  ###
+  * Print a line to process.stdout
+  * Will always add a newline after
+
+  * @param {String} line
+  ###
 
   displayLine: (line) ->
     process.stdout.write "#{line}\n"
 
 
-# Exports
+# Export the class
 module.exports = Skeleton

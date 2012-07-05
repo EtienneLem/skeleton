@@ -81,6 +81,7 @@ class Template
     """
 
     # ./myapp/app/assets/css
+    # Stylus
     if @opts.css == 'stylus'
       files["#{@appName}/app/assets/css/styles.styl"] = """
         // Based on <https://github.com/heliom/stylus-utils/blob/master/styles.styl-sample>
@@ -114,6 +115,7 @@ class Template
         a:focus, a:hover, a:visited:hover { color: hotpink }
       """
 
+    # Less
     if @opts.css == 'less'
       files["#{@appName}/app/assets/css/styles.less"] = """
         // Based on <https://github.com/heliom/stylus-utils/blob/master/styles.styl-sample>
@@ -150,6 +152,7 @@ class Template
         a:focus, a:hover, a:visited:hover { color: hotpink }
       """
 
+    # css
     if @opts.css == 'css'
       files["#{@appName}/app/assets/css/styles.css"] = """
         /* Based on <https://github.com/heliom/stylus-utils/blob/master/styles.styl-sample> */
@@ -185,11 +188,13 @@ class Template
       """
 
     # ./myapp/app/assets/js
+    # CoffeeScript
     if @opts.js == 'coffee'
       files["#{@appName}/app/assets/js/scripts.coffee"] = """
         # console.log '#{@appName}'
       """
 
+    # JavaScript
     if @opts.js == 'js'
       files["#{@appName}/app/assets/js/scripts.js"] = """
         // console.log('#{@appName}')
@@ -258,6 +263,7 @@ class Template
     """
 
     # ./myapp/app/views
+    # Ejs
     if @opts.renderer == 'ejs'
       files["#{@appName}/app/views/404.ejs"] = "<h1>Nothing here…</h1>"
 
@@ -286,6 +292,7 @@ class Template
         </html>
       """
 
+    # Jade
     if @opts.renderer == 'jade'
       files["#{@appName}/app/views/404.jade"] = """
         extends layout
