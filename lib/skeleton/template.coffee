@@ -26,7 +26,7 @@ class Template
             "start": "server.js"
           }
         , "engines": {
-            "node": "0.8.0"
+            "node": "*"
           }
       }
     """
