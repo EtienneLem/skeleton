@@ -19,8 +19,8 @@ class Skeleton
 
   @OPTIONS = [
   #  Short Long           Description                             Choices
-    ['-h', '--help',      'display this help message'                                      ]
-    ['-v', '--version',   'display the version number'                                     ]
+    ['-h', '--help',      'display this help message'                                       ]
+    ['-v', '--version',   'display the version number'                                      ]
     ['-f', '--force',     'force on non-empty directory'                                    ]
     ['-d', '--directory', 'the output directory (default: ./)',   ['']                      ]
     ['-r', '--renderer',  'template engine',                      ['ejs', 'jade']           ]
