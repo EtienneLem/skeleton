@@ -101,6 +101,7 @@ class Skeleton
       short = option[0]
       long = option[1]
       desc = option[2]
+      choices = option[3]
 
       length = short.length + long.length
       longest = length if length > longest
@@ -109,13 +110,19 @@ class Skeleton
         short: short
         long: long
         desc: desc
+        choices: choices
         length: length
 
     this.displayLine '\n  Usage: skeleton [options] myapp\n'
 
     for rule in rules
       spaces = new Array(longest - rule.length + 3).join(' ')
-      this.displayLine "  #{rule.short}, #{rule.long}#{spaces}#{rule.desc}"
+      this.displayLine "  #{rule.short}, #{rule.long}#{spaces}#{rule.desc} #{this.printChoices rule.choices}"
+
+  printChoices: (choices) ->
+    return '' if !choices
+
+    "[#{choices.join(', ')}] (default: #{choices[0]})"
 
   displayVersion: ->
     this.displayLine "Skeleton version #{Skeleton.VERSION}"
