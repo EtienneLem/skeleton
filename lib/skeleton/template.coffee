@@ -18,9 +18,9 @@ class Template
         , "dependencies": {
               "express": "3.0.x"
             , "connect-assets": "2.1.x"
-            #{this.printTemplateEngine()}
-            #{this.printCssEngine()}
-            #{this.printJsEngine()}
+            #{this.getTemplateModule()}
+            #{this.getCssModule()}
+            #{this.getJsModule()}
           }
         , "scripts": {
             "start": "server.js"
@@ -365,7 +365,7 @@ class Template
     # Return the files object
     files
 
-  printTemplateEngine: ->
+  getTemplateModule: ->
     module = ''
     spaces = '      '
 
@@ -379,17 +379,16 @@ class Template
       , "#{@opts.renderer}": "*"
     """
 
-    # Returns the module(s) string
     module
 
-  printCssEngine: ->
+  getCssModule: ->
     if @opts.css != 'css'
       """
         , "#{@opts.css}": "*"
       """
     else ''
 
-  printJsEngine: ->
+  getJsModule: ->
     if @opts.js == 'coffee'
       """
         , "coffee-script": "*"
