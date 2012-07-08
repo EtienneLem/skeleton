@@ -29,42 +29,43 @@ class Skeleton
     ['-j', '--js',        'javascript engine',                    ['coffee', 'js']          ]
   ]
 
-  constructor: ->
+  constructor: (args=null, callback=null) ->
     @folderCache = {}
 
-    args = process.argv.splice(2)
-    options = new OptionParser(args, Skeleton.OPTIONS)
+    args ||= process.argv.splice(2)
+    @options = new OptionParser(args, Skeleton.OPTIONS)
 
     # Display help message and exit process
-    if options.help || args.length == 0
+    if @options.help || args.length == 0
       this.displayHelp()
       return
 
     # Display current version and exit process
-    if options.version
+    if @options.version
       this.displayVersion()
       return
 
-    if options.appName
-      files = fs.readdir "./#{options.appName}", (err, files) =>
+    if @options.appName
+      files = fs.readdir "#{@options.directory}/#{@options.appName}", (err, files) =>
         throw err if err && 'ENOENT' != err.code
         empty = !files?.length > 0
 
-        if empty || !empty && options.force
-          this.createProject(options.appName, options)
+        if empty || !empty && @options.force
+          this.createProject @options.appName
+          callback() if callback
         else
           this.displayLine 'Folder not empty. Use the --force flag to overrite'.grey
-          this.displayLine "#{'$'.cyan} skeleton -f #{options.appName}"
+          this.displayLine "#{'$'.cyan} skeleton -f #{@options.directory}/#{@options.appName}"
+          callback() if callback
 
   ###
   * Create a project in appName folder
 
   * @param {String} appName
-  * @param {Object} opts
   ###
 
-  createProject: (appName, opts) =>
-    template = new Template(appName, opts)
+  createProject: (appName) =>
+    template = new Template(appName, @options)
     this.displayLine ''
 
     for filename, content of template.files
@@ -72,11 +73,11 @@ class Skeleton
 
     this.displayLine ''
     this.displayLine '  ============================================='.cyan
-    this.displayLine "  #{'template engine:'.cyan} #{opts.renderer}"
-    this.displayLine "  #{'stylesheet engine:'.cyan} #{opts.css}"
-    this.displayLine "  #{'javascript engine:'.cyan} #{opts.js}"
+    this.displayLine "  #{'template engine:'.cyan} #{@options.renderer}"
+    this.displayLine "  #{'stylesheet engine:'.cyan} #{@options.css}"
+    this.displayLine "  #{'javascript engine:'.cyan} #{@options.js}"
     this.displayLine ''
-    this.displayLine "  #{'$'.cyan} cd #{opts.appName} && npm install"
+    this.displayLine "  #{'$'.cyan} cd #{@options.appName} && npm install"
     this.displayLine "  #{'$'.cyan} node server.js"
     this.displayLine '  ============================================='.cyan
 
