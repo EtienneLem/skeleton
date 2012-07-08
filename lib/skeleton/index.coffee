@@ -22,6 +22,7 @@ class Skeleton
     ['-h', '--help',      'display this help message'                                       ]
     ['-v', '--version',   'display the version number'                                      ]
     ['-f', '--force',     'force on non-empty directory'                                    ]
+    ['-n', '--nolog',     'do not print any message to process.stdout'                      ]
     ['-d', '--directory', 'the output directory (default: ./)',   ['']                      ]
     ['-r', '--renderer',  'template engine',                      ['ejs', 'jade']           ]
     ['-c', '--css',       'stylesheet engine',                    ['stylus', 'less', 'css'] ]
@@ -171,7 +172,7 @@ class Skeleton
   ###
 
   displayLine: (line) ->
-    process.stdout.write "#{line}\n"
+    process.stdout.write "#{line}\n" if !@options.nolog
 
 
 # Export the class
