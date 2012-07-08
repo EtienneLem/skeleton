@@ -5,12 +5,12 @@ util = require 'util'
 mkdirp = require 'mkdirp'
 colors = require 'colors'
 
+# Helpers
+require './helpers'
+
 # Local dependencies
 Template = require './template'
 OptionParser = require './option_parser'
-
-# Helpers
-require './helpers'
 
 # Main class
 class Skeleton
