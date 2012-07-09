@@ -78,6 +78,7 @@ myapp
 │ └─┬ myapp
 │   └── my_custom_class.coffee
 ├── package.json
+├── Procfile
 ├── public
 ├── README.md
 └── server.js

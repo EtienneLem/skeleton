@@ -35,6 +35,10 @@ class Template
       }
     """
 
+    files["#{@appDirectory}/#{@appName}/Procfile"] = """
+      web: node server.js
+    """
+
     files["#{@appDirectory}/#{@appName}/README.md"] = """
       # #{@appName}
       ***
