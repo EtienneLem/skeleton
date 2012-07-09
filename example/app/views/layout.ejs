@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>example</title>
+    <%- css('styles.css') %>
+  </head>
+  <body data-view="<%= view %>">
+    <%- body %>
+    <script>
+    document.write('<script src=' +
+    ('__proto__' in {} ? 'http://zeptojs.com/zepto.min.js' : 'http://code.jquery.com/jquery-1.7.2.min.js') +
+    '><\/script>')
+    </script>
+    <%- js('scripts.js') %>
+  </body>
+</html>
