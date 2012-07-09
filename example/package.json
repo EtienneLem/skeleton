@@ -13,6 +13,7 @@
       "start": "server.js"
     }
   , "engines": {
-      "node": "*"
+        "node": "0.8.0"
+      , "npm": "1.1.x"
     }
 }
