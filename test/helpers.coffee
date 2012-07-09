@@ -3,7 +3,7 @@ require "#{__dirname}/../lib/skeleton/helpers"
 describe 'helpers', ->
   describe 'Array', ->
     describe '#last()', ->
-      it 'should last item of an array', ->
+      it 'should return last item of an array', ->
         ['a', 'b', 'c'].last().should.equal 'c'
 
     describe '#clone()', ->
