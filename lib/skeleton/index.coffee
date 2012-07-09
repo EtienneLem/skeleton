@@ -46,7 +46,7 @@ class Skeleton
       return
 
     if @options.appName
-      files = fs.readdir "#{@options.directory}/#{@options.appName}", (err, files) =>
+      files = fs.readdir "#{@options.directory || '.'}/#{@options.appName}", (err, files) =>
         throw err if err && 'ENOENT' != err.code
         empty = !files?.length > 0
 
@@ -55,7 +55,7 @@ class Skeleton
           callback() if callback
         else
           this.displayLine 'Folder not empty. Use the --force flag to overrite'.grey
-          this.displayLine "#{'$'.cyan} skeleton -f #{@options.directory}/#{@options.appName}"
+          this.displayLine "#{'$'.cyan} skeleton -f #{@options.directory || '.'}/#{@options.appName}"
           callback() if callback
 
   ###
