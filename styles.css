@@ -1,0 +1,44 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #ededed;
+}
+
+#nav {
+  background-color: #e6e6e6;
+}
+
+#nav #sections ul li a {
+  color: #6666cc;
+}
+
+#nav .extra a:hover,
+#nav .extra a:focus {
+  color: #6666cc;
+}
+
+#content #github-ribbon {
+  border: 0;
+}
+
+#content p {
+  color: #000;
+}
+
+#content a {
+  color: #000;
+  padding-bottom: .1em;
+  border-bottom: 1px solid #5d53fc;
+}
+#content a:hover,
+#content a:focus {
+  text-decoration: none;
+  color: #5d53fc;
+}
+
+#content code {
+  background-color: #fff;
+}
+
+#content pre code {
+  border-radius: 3px;
+}

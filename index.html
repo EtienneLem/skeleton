@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="documentup.min.js"></script>
+    <script>
+      DocumentUp.document({
+        repo: 'EtienneLem/octofeed',
+        name: 'Skeleton',
+        twitter: 'EtienneLem',
+        afterRender: function(data) {
+          var head = document.getElementsByTagName("head")[0];
+
+          var stylesheet = document.createElement("link");
+          stylesheet.rel = "stylesheet"; stylesheet.href = "styles.css";
+          head.appendChild(stylesheet);
+        }
+      })
+    </script>
+  </head>
+  <body></body>
+</html>
