@@ -30,7 +30,8 @@ class Template
             "start": "server.js"
           }
         , "engines": {
-            "node": "*"
+              "node": "#{process.version.replace 'v', ''}"
+            , "npm": "1.1.x"
           }
       }
     """
