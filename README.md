@@ -46,6 +46,7 @@ $ npm test
 * Partials/layout ([removed from Express 3.0](https://github.com/visionmedia/express/wiki/Migrating-from-2.x-to-3.x)) via [express-partials](https://github.com/publicclass/express-partials)*
   * *At least until layout support is added to [ejs](https://github.com/visionmedia/ejs)
   * *Not in the package when using [Jade](https://github.com/visionmedia/jade)
+* Heroku-ready (see https://devcenter.heroku.com/articles/nodejs)
 
 ### Not quite a framework
 I guess this could be considered the generator part of a framework.
