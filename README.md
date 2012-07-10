@@ -17,6 +17,12 @@ $ skeleton --renderer jade --css less myapp
 $ skeleton myapp --js js
 ```
 
+### Start your application
+```sh
+$ node server.js
+$ node server.js -p 1337
+```
+
 ### Help
 ```sh
 $ skeleton --help
