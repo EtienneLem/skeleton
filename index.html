@@ -10,9 +10,22 @@
         afterRender: function(data) {
           var head = document.getElementsByTagName("head")[0];
 
+          // Custom css
           var stylesheet = document.createElement("link");
           stylesheet.rel = "stylesheet"; stylesheet.href = "styles.css";
           head.appendChild(stylesheet);
+
+          // Gauges
+          var _gauges = _gauges || [];
+          (function() {
+            var t   = document.createElement('script');
+            t.type  = 'text/javascript';
+            t.async = true;
+            t.id    = 'gauges-tracker';
+            t.setAttribute('data-site-id', '4ffb7dbd613f5d4da500001b');
+            t.src = 'http://secure.gaug.es/track.js';
+            head.appendChild(t);
+          })();
         }
       })
     </script>
