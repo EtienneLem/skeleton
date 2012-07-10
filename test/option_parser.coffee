@@ -20,8 +20,3 @@ describe 'OptionParser', ->
     args = ['--css', 'banana']
     assert.throws ->
       new OptionParser(args, Skeleton.OPTIONS)
-
-  it 'should remove an argument when it is parsed', ->
-    args = ['--js', 'coffee', '--css', 'stylus']
-    options = new OptionParser(args, Skeleton.OPTIONS)
-    args.length.should.equal 0
