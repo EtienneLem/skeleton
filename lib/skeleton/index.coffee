@@ -33,7 +33,7 @@ class Skeleton
     @folderCache = {}
 
     args ||= process.argv.splice(2)
-    @options = new OptionParser(args, Skeleton.OPTIONS)
+    @options = new OptionParser(args.clone(), Skeleton.OPTIONS)
 
     # Display help message and exit process
     if @options.help || args.length == 0
