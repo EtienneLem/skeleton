@@ -18,7 +18,7 @@
     "mocha": "1.3.x",
     "rimraf": "2.0.x"
   },
-  "keywords": ["skeleton", "express", "structure"],
+  "keywords": ["skeleton", "express", "structure", "generator"],
   "bin": { "skeleton": "./bin/skeleton" },
   "scripts": {
     "test": "cake test"
