@@ -1,7 +1,7 @@
 {
   "name": "skeleton",
   "description": "Express 3.0 framework-less app structure generator",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Etienne Lemay",
   "repository": {
     "type": "git",
