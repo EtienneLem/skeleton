@@ -1,6 +1,8 @@
 ![Skeleton](https://s3.amazonaws.com/skeleton/skeleton.png)
 
-[Express](https://github.com/visionmedia/express) 3.0 framework-less app structure generator
+[Express](https://github.com/visionmedia/express) 3.0 framework-less app structure generator<br>
+[Documentation](http://etiennelem.github.com/skeleton) •
+[Blog post](http://heliom.ca/en/blog/skeleton)
 
 ## Usage
 ### Installation
