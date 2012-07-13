@@ -20,7 +20,7 @@ class Template
           "name": "#{@appName}"
         , "version": "0.0.1"
         , "dependencies": {
-              "express": "3.0.x"
+              "express": "3.0.0beta4"
             , "connect-assets": "2.1.x"
             #{this.getTemplateModule()}
             #{this.getCssModule()}
