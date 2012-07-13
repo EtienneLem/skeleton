@@ -57,7 +57,7 @@ $ npm test
 
 ### Not quite a framework
 I guess this could be considered the generator part of a framework.
-It does create a view-controller user interface which do a bunch of things a framework would do, but once your project is generated it is up to you.
+It does create a view-controller user interface which does a bunch of things a framework would do, but once your project is generated it is up to you.
 
 ## Generated app structure
 See [example](https://github.com/EtienneLem/skeleton/tree/master/example).
