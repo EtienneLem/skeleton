@@ -97,7 +97,7 @@ myapp
 * Add [Sass](https://github.com/visionmedia/sass.js) support
 
 ## License
-Copyright (c) 2012 Etienne Lemay \<etienne@heliom.ca\>, \<[@EtienneLem](https://twitter.com/EtienneLem)\>
+Copyright (c) 2012 Etienne Lemay etienne@heliom.ca, [@EtienneLem](https://twitter.com/EtienneLem)
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
