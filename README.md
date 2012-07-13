@@ -1,5 +1,4 @@
-Skeleton
-========
+![Skeleton](https://s3.amazonaws.com/skeleton/skeleton.png)
 
 [Express](https://github.com/visionmedia/express) 3.0 framework-less app structure generator
 
