@@ -15,7 +15,7 @@ OptionParser = require './option_parser'
 # Main class
 class Skeleton
 
-  @VERSION = '0.1.0'
+  @VERSION = '0.1.1'
 
   @OPTIONS = [
   #  Short Long           Description                             Choices
