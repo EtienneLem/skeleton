@@ -1,14 +1,28 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
-  background-color: #fff;
+  background-color: #e6e6e6;
+}
+
+#container:after {
+  display: block;
+  content: '';
+  clear: both;
 }
 
 #nav {
   background-color: #e6e6e6;
+  width: 190px;
 }
 
 #nav #sections ul li a {
+  display: block;
   color: #6666cc;
+  margin-left: -.5em;
+  padding: .2em .5em .1em;
+  border-radius: 3px;
+}
+#nav #sections ul li a:hover {
+  background-color: #dadada;
 }
 
 #nav .extra a:hover,
@@ -16,8 +30,19 @@ body {
   color: #6666cc;
 }
 
+#content {
+  margin: 15px 0;
+  border-radius: 3px;
+}
+
 #content #github-ribbon {
   border: 0;
+}
+
+#content h2 {
+  color: #000;
+  padding: 0 0 .4em 0;
+  border-bottom: 1px solid #ccc;
 }
 
 #content p {
@@ -42,3 +67,9 @@ body {
 #content pre code {
   border-radius: 3px;
 }
+
+/* Syntax highlighting */
+pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo { color: #4d4d4c; }
+pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant { color: #4d4d4c; }
+pre .class, pre .ruby .class .title, pre .css .rules .attribute { color: #4d4d4c; }
+pre .keyword, pre .javascript .function { color: #4d4d4c; }
