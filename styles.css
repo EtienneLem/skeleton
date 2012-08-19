@@ -5,6 +5,8 @@ body {
 
 #nav {
   background-color: #e6e6e6;
+  padding: 20px;
+  width: 190px;
 }
 
 #nav #sections ul li a {
