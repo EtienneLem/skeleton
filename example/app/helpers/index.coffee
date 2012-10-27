@@ -3,6 +3,7 @@ fs = require 'fs'
 # Recursively require a folder’s files
 exports.autoload = autoload = (dir, app) ->
   fs.readdirSync(dir).forEach (file) ->
+    return if file is ".DS_Store"
     path = "#{dir}/#{file}"
     stats = fs.lstatSync(path)
 
