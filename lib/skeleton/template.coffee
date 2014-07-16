@@ -47,7 +47,7 @@ class Template
     """
 
     files["#{@appDirectory}/#{@appName}/server.js"] = """
-      require("coffee-script")
+      require("coffee-script/register")
       require("./app/app.coffee")
     """
 
@@ -320,7 +320,7 @@ class Template
       """
 
       files["#{@appDirectory}/#{@appName}/app/views/layout.jade"] = """
-        doctype 5
+        doctype html
         html(lang="en")
           head
             meta(charset="utf-8")
